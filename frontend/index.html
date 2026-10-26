@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RecipeNest – Share & Discover Delicious Home Recipes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+        <span class="brand-badge">FSD</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Guest Actions -->
+        <div id="nav-guest-actions" style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Join Free</a>
+        </div>
+
+        <!-- Authenticated User Actions -->
+        <div id="nav-user-actions" style="display: none; align-items: center; gap: 0.75rem;">
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm" title="Post new recipe">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipe
+          </a>
+
+          <div class="nav-user-dropdown">
+            <div id="user-pill-btn" class="user-pill">
+              <div id="nav-user-avatar" class="user-avatar">U</div>
+              <span id="nav-user-name">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <ul id="user-menu-dropdown" class="user-menu">
+              <li class="user-menu-item"><a href="/profile.html">My Profile</a></li>
+              <li class="user-menu-item"><a href="/my-recipes.html">My Recipes</a></li>
+              <li class="user-menu-item"><a href="/favorites.html">Saved Favorites</a></li>
+              <li class="user-menu-item" style="border-top: 1px solid var(--border-color); margin-top: 0.35rem;">
+                <button id="logout-btn" style="color: var(--accent-red);">Log Out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-tagline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+        </svg>
+        Full Stack Recipe Sharing Platform
+      </div>
+      <h1 class="hero-title">
+        Discover, Cook & Share <br><span>Extraordinary Recipes</span>
+      </h1>
+      <p class="hero-desc">
+        Explore thousands of curated culinary creations from home chefs around the world. Bookmark your favorites, share your secret recipes, and cook with passion.
+      </p>
+
+      <form id="hero-search-form" class="hero-search-box">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="margin-left: 0.5rem;">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="hero-search-input" class="hero-search-input" placeholder="Search by recipe title, ingredients (e.g., Avocado, Pasta, Chicken)...">
+        <button type="submit" class="btn btn-primary">Find Recipes</button>
+      </form>
+
+      <div class="hero-category-pills">
+        <span style="font-size: 0.85rem; font-weight: 700; color: var(--text-muted); margin-right: 0.25rem;">Popular:</span>
+        <a href="/recipes.html?category=Breakfast" class="category-pill">🍳 Breakfast</a>
+        <a href="/recipes.html?category=Lunch" class="category-pill">🥗 Lunch</a>
+        <a href="/recipes.html?category=Dinner" class="category-pill">🍲 Dinner</a>
+        <a href="/recipes.html?category=Vegetarian" class="category-pill">🥑 Vegetarian</a>
+        <a href="/recipes.html?category=Desserts" class="category-pill">🍰 Desserts</a>
+        <a href="/recipes.html?category=Snacks" class="category-pill">🍟 Snacks</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Strip -->
+  <section class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-item">
+          <div class="feature-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h4>Share Your Creations</h4>
+            <p>Publish detailed step-by-step recipes with ingredients and prep times.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h4>Save to Favorites</h4>
+            <p>One-click bookmarking to keep all your go-to dishes organized in one place.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h4>Smart Filtering</h4>
+            <p>Filter by cuisine category, difficulty level, and maximum cooking duration.</p>
+          </div>
+        </div>
+
+        <div class="feature-item">
+          <div class="feature-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <div class="feature-info">
+            <h4>Secure & Reliable</h4>
+            <p>JWT authentication, bcrypt password hashing, and MongoDB Atlas database.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Recipes Section -->
+  <main class="main-content container" style="margin-top: 3.5rem;">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Featured Recipes</h2>
+        <p class="section-subtitle">Fresh from the kitchen of passionate home chefs and culinary enthusiasts.</p>
+      </div>
+      <a href="/recipes.html" class="btn btn-outline-primary">
+        View All Recipes
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </div>
+
+    <!-- Dynamic Recipe Grid -->
+    <div id="featured-recipe-grid" class="recipe-grid">
+      <!-- Loading skeletons -->
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+    </div>
+
+    <!-- Call to action card -->
+    <div style="background: linear-gradient(135deg, var(--primary) 0%, #ea580c 100%); border-radius: var(--radius-xl); padding: 3rem 2rem; color: #fff; text-align: center; margin: 3rem 0; box-shadow: var(--shadow-lg);">
+      <h2 style="color: #fff; font-size: 2.2rem; margin-bottom: 0.75rem;">Have a signature recipe to share?</h2>
+      <p style="color: rgba(255,255,255,0.9); max-width: 550px; margin: 0 auto 1.75rem; font-size: 1.05rem;">
+        Join RecipeNest today and showcase your culinary creations to food lovers worldwide.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="/register.html" class="btn btn-lg" style="background: #fff; color: var(--primary);">Get Started Free</a>
+        <a href="/recipes.html" class="btn btn-lg btn-outline" style="color: #fff; border-color: rgba(255,255,255,0.6);">Browse All Dishes</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>
+            <span style="color: var(--primary);">🍳</span> RecipeNest
+          </h3>
+          <p>
+            A modern, responsive full-stack recipe sharing platform built with Node.js, Express, MongoDB Atlas, and Vanilla JavaScript.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/recipes.html">All Recipes</a></li>
+            <li><a href="/recipes.html?category=Breakfast">Breakfast Ideas</a></li>
+            <li><a href="/recipes.html?category=Dinner">Dinner Specials</a></li>
+            <li><a href="/recipes.html?category=Desserts">Sweet Treats</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="/add-recipe.html">Share a Recipe</a></li>
+            <li><a href="/favorites.html">Saved Recipes</a></li>
+            <li><a href="/my-recipes.html">My Recipes</a></li>
+            <li><a href="/profile.html">Chef Profile</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project Info</h4>
+          <ul class="footer-links">
+            <li><a href="/about.html">About Project</a></li>
+            <li><a href="/contact.html">Contact & FAQ</a></li>
+            <li><a href="/api/health" target="_blank">API Health Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <span>Stack: Express &bull; MongoDB Atlas &bull; Vanilla JS</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Search form handler
+    document.getElementById('hero-search-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const term = document.getElementById('hero-search-input').value.trim();
+      if (term) {
+        window.location.href = `/recipes.html?search=${encodeURIComponent(term)}`;
+      } else {
+        window.location.href = '/recipes.html';
+      }
+    });
+
+    // Load featured recipes
+    async function loadFeaturedRecipes() {
+      const grid = document.getElementById('featured-recipe-grid');
+      try {
+        const data = await api.get('/recipes', { limit: 6, sort: 'newest' });
+        grid.innerHTML = '';
+        if (data && data.recipes && data.recipes.length > 0) {
+          data.recipes.forEach((recipe) => {
+            grid.appendChild(ui.renderRecipeCard(recipe));
+          });
+        } else {
+          ui.renderEmptyState(
+            grid,
+            'No Recipes Yet',
+            'Be the first chef to publish a recipe on RecipeNest!',
+            'Publish Recipe',
+            '/add-recipe.html'
+          );
+        }
+      } catch (err) {
+        grid.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 2rem; background: #fff; border-radius: var(--radius-md); text-align: center; border: 1px solid var(--border-color);">
+            <p style="color: var(--accent-red); font-weight: 600; margin-bottom: 0.5rem;">Could not load featured recipes.</p>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Make sure MongoDB Atlas is configured in .env and the seed script has been executed.</p>
+            <button onclick="loadFeaturedRecipes()" class="btn btn-outline btn-sm">Try Again</button>
+          </div>
+        `;
+      }
+    }
+
+    loadFeaturedRecipes();
+  </script>
+</body>
+</html>

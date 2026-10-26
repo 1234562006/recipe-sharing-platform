@@ -1,0 +1,36 @@
+{
+  "name": "recipe-sharing-platform",
+  "version": "1.0.0",
+  "description": "RecipeNest - Full-Stack Recipe Sharing Platform with Node.js, Express, MongoDB Atlas, and Vanilla JS",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "node --watch backend/server.js",
+    "seed": "node backend/seed.js",
+    "test": "node test/api.test.js"
+  },
+  "keywords": [
+    "recipes",
+    "food",
+    "full-stack",
+    "express",
+    "mongodb",
+    "mongoose",
+    "rest-api"
+  ],
+  "author": "RecipeNest Team",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.8.4"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^10.1.2",
+    "supertest": "^7.0.0"
+  }
+}

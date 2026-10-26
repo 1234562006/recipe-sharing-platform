@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About RecipeNest – College FSD Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link active">About</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div id="nav-guest-actions" style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Join Free</a>
+        </div>
+
+        <div id="nav-user-actions" style="display: none; align-items: center; gap: 0.75rem;">
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipe
+          </a>
+
+          <div class="nav-user-dropdown">
+            <div id="user-pill-btn" class="user-pill">
+              <div id="nav-user-avatar" class="user-avatar">U</div>
+              <span id="nav-user-name">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <ul id="user-menu-dropdown" class="user-menu">
+              <li class="user-menu-item"><a href="/profile.html">My Profile</a></li>
+              <li class="user-menu-item"><a href="/my-recipes.html">My Recipes</a></li>
+              <li class="user-menu-item"><a href="/favorites.html">Saved Favorites</a></li>
+              <li class="user-menu-item" style="border-top: 1px solid var(--border-color); margin-top: 0.35rem;">
+                <button id="logout-btn" style="color: var(--accent-red);">Log Out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header style="background: #fff; border-bottom: 1px solid var(--border-color); padding: 3rem 0;">
+    <div class="container" style="max-width: 850px;">
+      <span class="dietary-tag" style="margin-bottom: 0.75rem; display: inline-block;">College FSD Project</span>
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.75rem;">About RecipeNest</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7;">
+        RecipeNest is a production-grade full-stack recipe sharing web application engineered to demonstrate modern full-stack web development practices, RESTful architectural design, and secure MongoDB persistence.
+      </p>
+    </div>
+  </header>
+
+  <main class="main-content container" style="margin-top: 3rem; max-width: 850px;">
+    <!-- Architecture Stack -->
+    <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+      <h2 style="margin-bottom: 1.5rem; color: var(--primary);">System Architecture & Technology Stack</h2>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+        <div style="border-left: 3px solid var(--primary); padding-left: 1rem;">
+          <h4 style="margin-bottom: 0.35rem;">Frontend Layer</h4>
+          <p style="font-size: 0.9rem;">Clean HTML5 semantic elements, custom modern CSS3 design tokens with responsive Flexbox/Grid, and modular Vanilla JavaScript.</p>
+        </div>
+
+        <div style="border-left: 3px solid var(--secondary); padding-left: 1rem;">
+          <h4 style="margin-bottom: 0.35rem;">Backend REST API</h4>
+          <p style="font-size: 0.9rem;">Node.js and Express.js providing JSON RESTful endpoints, rate limiting, and centralized error handling middleware.</p>
+        </div>
+
+        <div style="border-left: 3px solid #3b82f6; padding-left: 1rem;">
+          <h4 style="margin-bottom: 0.35rem;">Database & ODM</h4>
+          <p style="font-size: 0.9rem;">MongoDB Atlas cloud cluster with Mongoose schemas, text search indices, compound unique favorite relationships, and virtual getters.</p>
+        </div>
+
+        <div style="border-left: 3px solid #8b5cf6; padding-left: 1rem;">
+          <h4 style="margin-bottom: 0.35rem;">Authentication & Security</h4>
+          <p style="font-size: 0.9rem;">bcrypt salted password hashing, JSON Web Tokens (JWT) verification, recipe ownership authorization, and strict input validation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Features -->
+    <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; margin-bottom: 2rem; box-shadow: var(--shadow-sm);">
+      <h2 style="margin-bottom: 1.25rem;">Key Platform Capabilities</h2>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem;">
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: var(--secondary); font-weight: bold;">&#10003;</span>
+          <span><strong>Full Recipe CRUD:</strong> Authenticated users can create, read, update, and safely delete their own recipes.</span>
+        </li>
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: var(--secondary); font-weight: bold;">&#10003;</span>
+          <span><strong>Dynamic Multi-filter Search:</strong> Live full-text search across titles and ingredients combined with category, difficulty, and max cook time filters.</span>
+        </li>
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: var(--secondary); font-weight: bold;">&#10003;</span>
+          <span><strong>Favorites Bookmark Relationship:</strong> Database-backed user favorites preventing duplicates via compound unique indexing.</span>
+        </li>
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: var(--secondary); font-weight: bold;">&#10003;</span>
+          <span><strong>Strict Ownership Protection:</strong> Prevents unauthorized users from modifying or deleting dishes created by other chefs.</span>
+        </li>
+        <li style="display: flex; gap: 0.75rem; align-items: flex-start;">
+          <span style="color: var(--secondary); font-weight: bold;">&#10003;</span>
+          <span><strong>Graceful Fallbacks:</strong> Broken or unavailable image URLs automatically fall back to custom inline SVG graphics.</span>
+        </li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

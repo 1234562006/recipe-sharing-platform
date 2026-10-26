@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Recipe – RecipeNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div id="nav-guest-actions" style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Join Free</a>
+        </div>
+
+        <div id="nav-user-actions" style="display: none; align-items: center; gap: 0.75rem;">
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipe
+          </a>
+
+          <div class="nav-user-dropdown">
+            <div id="user-pill-btn" class="user-pill">
+              <div id="nav-user-avatar" class="user-avatar">U</div>
+              <span id="nav-user-name">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <ul id="user-menu-dropdown" class="user-menu">
+              <li class="user-menu-item"><a href="/profile.html">My Profile</a></li>
+              <li class="user-menu-item"><a href="/my-recipes.html">My Recipes</a></li>
+              <li class="user-menu-item"><a href="/favorites.html">Saved Favorites</a></li>
+              <li class="user-menu-item" style="border-top: 1px solid var(--border-color); margin-top: 0.35rem;">
+                <button id="logout-btn" style="color: var(--accent-red);">Log Out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="main-content container">
+    <div class="form-card">
+      <div class="form-header">
+        <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Edit Recipe</h1>
+        <p>Update your recipe ingredients, instructions, and cooking details.</p>
+      </div>
+
+      <div id="loading-state" style="text-align: center; padding: 2rem;">
+        <p>Loading recipe data from database...</p>
+      </div>
+
+      <form id="edit-recipe-form" style="display: none;">
+        <!-- Basic Info Section -->
+        <h3 class="form-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+          </svg>
+          1. General Information
+        </h3>
+
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="title">Recipe Title *</label>
+          <input type="text" id="title" class="form-control" required maxlength="120">
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.25rem; margin-bottom: 1.25rem;">
+          <div class="form-group">
+            <label class="form-label" for="category">Category *</label>
+            <select id="category" class="form-control" required>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Snacks">Snacks</option>
+              <option value="Desserts">Desserts</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="difficulty">Difficulty Level *</label>
+            <select id="difficulty" class="form-control" required>
+              <option value="Easy">Easy</option>
+              <option value="Medium">Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="description">Short Description</label>
+          <textarea id="description" class="form-control" rows="3"></textarea>
+        </div>
+
+        <!-- Cooking Parameters -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+          <div class="form-group">
+            <label class="form-label" for="prepTime">Prep Time (mins) *</label>
+            <input type="number" id="prepTime" class="form-control" min="0" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cookTime">Cook Time (mins) *</label>
+            <input type="number" id="cookTime" class="form-control" min="0" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="servings">Servings *</label>
+            <input type="number" id="servings" class="form-control" min="1" required>
+          </div>
+        </div>
+
+        <!-- Image URL & Live Preview -->
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <label class="form-label" for="imageUrl">Recipe Image URL</label>
+          <input type="url" id="imageUrl" class="form-control">
+          <div id="image-preview" class="image-preview-box"></div>
+        </div>
+
+        <!-- Dietary Tags -->
+        <div class="form-group" style="margin-bottom: 1.75rem;">
+          <label class="form-label">Dietary Tags</label>
+          <div class="tag-selector-wrapper">
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Vegetarian">
+              <span>Vegetarian</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Vegan">
+              <span>Vegan</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Gluten-Free">
+              <span>Gluten-Free</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Dairy-Free">
+              <span>Dairy-Free</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="High-Protein">
+              <span>High-Protein</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Low-Carb">
+              <span>Low-Carb</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Keto">
+              <span>Keto</span>
+            </label>
+            <label class="tag-checkbox-pill">
+              <input type="checkbox" name="dietaryTags" value="Quick">
+              <span>Quick (&lt;30m)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Ingredients Section -->
+        <h3 class="form-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+          2. Ingredients List *
+        </h3>
+        <div id="ingredients-container"></div>
+        <button type="button" id="add-ingredient-btn" class="btn btn-outline btn-sm" style="margin-bottom: 2rem;">
+          + Add Another Ingredient
+        </button>
+
+        <!-- Instructions Section -->
+        <h3 class="form-section-title">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 11 12 14 22 4"></polyline>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          3. Step-by-Step Instructions *
+        </h3>
+        <div id="instructions-container"></div>
+        <button type="button" id="add-instruction-btn" class="btn btn-outline btn-sm" style="margin-bottom: 2.5rem;">
+          + Add Another Step
+        </button>
+
+        <!-- Form Actions -->
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+          <a id="cancel-link" href="/my-recipes.html" class="btn btn-outline">Cancel</a>
+          <button type="submit" id="save-btn" class="btn btn-primary btn-lg">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    if (!auth.requireAuth()) {
+      // redirected
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipeId = urlParams.get('id');
+    const form = document.getElementById('edit-recipe-form');
+    const loadingState = document.getElementById('loading-state');
+    const ingContainer = document.getElementById('ingredients-container');
+    const instContainer = document.getElementById('instructions-container');
+    const imageInput = document.getElementById('imageUrl');
+    const imagePreviewBox = document.getElementById('image-preview');
+    const saveBtn = document.getElementById('save-btn');
+
+    function updatePreview(url) {
+      if (url) {
+        imagePreviewBox.innerHTML = `<img src="${ui.escapeHtml(url)}" alt="Preview" onerror="this.onerror=null; this.src='${ui.PLACEHOLDER_IMAGE}'">`;
+      } else {
+        imagePreviewBox.innerHTML = `<div class="image-preview-empty"><span>Image preview will appear here</span></div>`;
+      }
+    }
+
+    imageInput.addEventListener('input', () => updatePreview(imageInput.value.trim()));
+
+    function addIngredientRow(value = '') {
+      const row = document.createElement('div');
+      row.className = 'dynamic-list-row';
+      row.innerHTML = `
+        <input type="text" class="form-control ingredient-input" value="${ui.escapeHtml(value)}" placeholder="e.g. 2 tbsp olive oil" required>
+        <button type="button" class="btn-remove-row" title="Remove ingredient">&times;</button>
+      `;
+      ingContainer.appendChild(row);
+    }
+
+    function addInstructionRow(value = '') {
+      const row = document.createElement('div');
+      row.className = 'dynamic-list-row';
+      const stepIndex = instContainer.querySelectorAll('.dynamic-list-row').length + 1;
+      row.innerHTML = `
+        <span style="font-weight: 700; color: var(--primary); min-width: 1.5rem;">${stepIndex}.</span>
+        <input type="text" class="form-control instruction-input" value="${ui.escapeHtml(value)}" placeholder="e.g. Sauté garlic until fragrant." required>
+        <button type="button" class="btn-remove-row" title="Remove step">&times;</button>
+      `;
+      instContainer.appendChild(row);
+    }
+
+    function renumberSteps() {
+      const rows = instContainer.querySelectorAll('.dynamic-list-row');
+      rows.forEach((row, idx) => {
+        const span = row.querySelector('span');
+        if (span) span.textContent = `${idx + 1}.`;
+      });
+    }
+
+    document.getElementById('add-ingredient-btn').addEventListener('click', () => addIngredientRow());
+    document.getElementById('add-instruction-btn').addEventListener('click', () => addInstructionRow());
+
+    document.addEventListener('click', (e) => {
+      if (e.target.classList.contains('btn-remove-row')) {
+        const row = e.target.closest('.dynamic-list-row');
+        const container = row.parentElement;
+        if (container.querySelectorAll('.dynamic-list-row').length > 1) {
+          row.remove();
+          if (container.id === 'instructions-container') {
+            renumberSteps();
+          }
+        } else {
+          ui.showToast('You must keep at least one row.', 'info');
+        }
+      }
+    });
+
+    async function loadRecipeData() {
+      if (!recipeId) {
+        ui.showToast('No recipe ID specified.', 'error');
+        setTimeout(() => window.location.href = '/my-recipes.html', 1000);
+        return;
+      }
+
+      try {
+        const data = await api.get(`/recipes/${recipeId}`);
+        const recipe = data.recipe;
+
+        if (!data.isAuthor) {
+          ui.showToast('You are not authorized to edit this recipe.', 'error');
+          setTimeout(() => window.location.href = `/recipe-details.html?id=${recipeId}`, 1500);
+          return;
+        }
+
+        // Populate fields
+        document.getElementById('title').value = recipe.title || '';
+        document.getElementById('category').value = recipe.category || 'Dinner';
+        document.getElementById('difficulty').value = recipe.difficulty || 'Easy';
+        document.getElementById('description').value = recipe.description || '';
+        document.getElementById('prepTime').value = recipe.prepTime || 0;
+        document.getElementById('cookTime').value = recipe.cookTime || 0;
+        document.getElementById('servings').value = recipe.servings || 2;
+        imageInput.value = recipe.imageUrl || '';
+        updatePreview(recipe.imageUrl);
+
+        // Dietary tags
+        if (Array.isArray(recipe.dietaryTags)) {
+          const tags = new Set(recipe.dietaryTags);
+          document.querySelectorAll('input[name="dietaryTags"]').forEach((cb) => {
+            if (tags.has(cb.value)) cb.checked = true;
+          });
+        }
+
+        // Ingredients
+        ingContainer.innerHTML = '';
+        if (recipe.ingredients && recipe.ingredients.length > 0) {
+          recipe.ingredients.forEach((ing) => addIngredientRow(ing));
+        } else {
+          addIngredientRow();
+        }
+
+        // Instructions
+        instContainer.innerHTML = '';
+        if (recipe.instructions && recipe.instructions.length > 0) {
+          recipe.instructions.forEach((inst) => addInstructionRow(inst));
+        } else {
+          addInstructionRow();
+        }
+
+        document.getElementById('cancel-link').href = `/recipe-details.html?id=${recipeId}`;
+
+        loadingState.style.display = 'none';
+        form.style.display = 'block';
+      } catch (err) {
+        loadingState.innerHTML = `
+          <p style="color: var(--accent-red); font-weight: 600;">Error: ${ui.escapeHtml(err.message)}</p>
+          <a href="/my-recipes.html" class="btn btn-outline btn-sm" style="margin-top: 1rem;">Back to My Recipes</a>
+        `;
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const ingInputs = document.querySelectorAll('.ingredient-input');
+      const ingredients = Array.from(ingInputs).map((i) => i.value.trim()).filter(Boolean);
+      if (ingredients.length === 0) {
+        ui.showToast('Please provide at least one ingredient.', 'error');
+        return;
+      }
+
+      const instInputs = document.querySelectorAll('.instruction-input');
+      const instructions = Array.from(instInputs).map((i) => i.value.trim()).filter(Boolean);
+      if (instructions.length === 0) {
+        ui.showToast('Please provide at least one step.', 'error');
+        return;
+      }
+
+      const tagCheckboxes = document.querySelectorAll('input[name="dietaryTags"]:checked');
+      const dietaryTags = Array.from(tagCheckboxes).map((cb) => cb.value);
+
+      const payload = {
+        title: document.getElementById('title').value.trim(),
+        category: document.getElementById('category').value,
+        difficulty: document.getElementById('difficulty').value,
+        description: document.getElementById('description').value.trim(),
+        prepTime: Number(document.getElementById('prepTime').value) || 0,
+        cookTime: Number(document.getElementById('cookTime').value) || 0,
+        servings: Number(document.getElementById('servings').value) || 1,
+        imageUrl: imageInput.value.trim(),
+        ingredients,
+        instructions,
+        dietaryTags,
+      };
+
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+        await api.put(`/recipes/${recipeId}`, payload);
+        ui.showToast('Recipe updated successfully!', 'success');
+        setTimeout(() => {
+          window.location.href = `/recipe-details.html?id=${recipeId}`;
+        }, 1000);
+      } catch (err) {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save Changes';
+        ui.showToast(err.message || 'Failed to update recipe', 'error');
+      }
+    });
+
+    loadRecipeData();
+  </script>
+</body>
+</html>

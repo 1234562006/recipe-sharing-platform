@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In – RecipeNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="/register.html" class="btn btn-outline btn-sm">Create Account</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h2>Welcome Back</h2>
+        <p>Log in to manage your recipes and favorites.</p>
+      </div>
+
+      <!-- Demo Account Callout -->
+      <div class="demo-account-callout">
+        <strong>Demo Evaluator Account:</strong>
+        <div>Email: <code>chef@recipenest.com</code></div>
+        <div>Password: <code>ChefPass123!</code></div>
+        <button type="button" id="fill-demo-btn" class="btn btn-outline btn-sm" style="margin-top: 0.5rem; background: #fff; width: 100%;">
+          Auto-fill Demo Credentials
+        </button>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group" style="margin-bottom: 1.25rem;">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="your.email@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label class="form-label" for="password">Password</label>
+          </div>
+          <input type="password" id="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-bottom: 1.25rem;">
+          Sign In
+        </button>
+
+        <p style="text-align: center; font-size: 0.9rem; color: var(--text-muted);">
+          Don't have an account yet? 
+          <a href="/register.html" style="color: var(--primary); font-weight: 700;">Sign up</a>
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    auth.redirectIfAuthenticated();
+
+    const form = document.getElementById('login-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+
+    // Demo auto-fill
+    document.getElementById('fill-demo-btn').addEventListener('click', () => {
+      emailInput.value = 'chef@recipenest.com';
+      passwordInput.value = 'ChefPass123!';
+      ui.showToast('Demo credentials filled!', 'info');
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+
+      if (!email || !password) {
+        ui.showToast('Please enter both email and password.', 'error');
+        return;
+      }
+
+      try {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Signing in...';
+
+        const data = await api.post('/auth/login', { email, password });
+        auth.setAuth(data.token, data.user);
+        ui.showToast(`Welcome back, ${data.user.name}!`, 'success');
+
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect') || '/recipes.html';
+
+        setTimeout(() => {
+          window.location.href = decodeURIComponent(redirect);
+        }, 800);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Sign In';
+        ui.showToast(err.message || 'Login failed. Please check your credentials.', 'error');
+      }
+    });
+  </script>
+</body>
+</html>

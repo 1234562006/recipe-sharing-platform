@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore Recipes – RecipeNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link active">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+        <li><a href="/contact.html" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div id="nav-guest-actions" style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Join Free</a>
+        </div>
+
+        <div id="nav-user-actions" style="display: none; align-items: center; gap: 0.75rem;">
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipe
+          </a>
+
+          <div class="nav-user-dropdown">
+            <div id="user-pill-btn" class="user-pill">
+              <div id="nav-user-avatar" class="user-avatar">U</div>
+              <span id="nav-user-name">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <ul id="user-menu-dropdown" class="user-menu">
+              <li class="user-menu-item"><a href="/profile.html">My Profile</a></li>
+              <li class="user-menu-item"><a href="/my-recipes.html">My Recipes</a></li>
+              <li class="user-menu-item"><a href="/favorites.html">Saved Favorites</a></li>
+              <li class="user-menu-item" style="border-top: 1px solid var(--border-color); margin-top: 0.35rem;">
+                <button id="logout-btn" style="color: var(--accent-red);">Log Out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header style="background: #fff; border-bottom: 1px solid var(--border-color); padding: 2.5rem 0;">
+    <div class="container">
+      <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Explore All Recipes</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem;">
+        Search and filter through delicious culinary creations by cuisine, difficulty, and cooking time.
+      </p>
+    </div>
+  </header>
+
+  <main class="main-content container" style="margin-top: 2rem;">
+    <!-- Filter and Search Bar -->
+    <div class="filter-bar">
+      <div class="filter-grid">
+        <!-- Search Input -->
+        <div class="form-group" style="grid-column: span 2;">
+          <label class="form-label" for="search-input">Search Title or Ingredients</label>
+          <div style="position: relative;">
+            <input type="text" id="search-input" class="form-control" placeholder="e.g. Avocado, Carbonara, Pancakes..." style="padding-left: 2.25rem;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%);">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Category Dropdown -->
+        <div class="form-group">
+          <label class="form-label" for="category-filter">Category</label>
+          <select id="category-filter" class="form-control">
+            <option value="All">All Categories</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Beverages">Beverages</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <!-- Difficulty Dropdown -->
+        <div class="form-group">
+          <label class="form-label" for="difficulty-filter">Difficulty</label>
+          <select id="difficulty-filter" class="form-control">
+            <option value="All">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+
+        <!-- Max Cooking Time -->
+        <div class="form-group">
+          <label class="form-label" for="time-filter">Max Total Time</label>
+          <select id="time-filter" class="form-control">
+            <option value="">Any Duration</option>
+            <option value="15">&le; 15 Minutes</option>
+            <option value="30">&le; 30 Minutes</option>
+            <option value="45">&le; 45 Minutes</option>
+            <option value="60">&le; 60 Minutes</option>
+          </select>
+        </div>
+
+        <!-- Sort -->
+        <div class="form-group">
+          <label class="form-label" for="sort-select">Sort By</label>
+          <select id="sort-select" class="form-control">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="cookTimeAsc">Fastest Cook Time</option>
+            <option value="titleAsc">Title (A - Z)</option>
+          </select>
+        </div>
+
+        <!-- Clear Filters Button -->
+        <div style="display: flex; gap: 0.5rem; align-items: flex-end;">
+          <button id="clear-filters-btn" class="btn btn-outline" style="width: 100%;">Clear</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Filters & Results Count -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.5rem;">
+      <span id="results-count" style="font-weight: 600; font-size: 0.95rem; color: var(--text-muted);">
+        Loading recipes...
+      </span>
+      <div id="active-filter-chips" style="display: flex; gap: 0.5rem; flex-wrap: wrap;"></div>
+    </div>
+
+    <!-- Recipes Grid -->
+    <div id="recipes-grid" class="recipe-grid">
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+      <div class="recipe-card skeleton" style="height: 380px;"></div>
+    </div>
+
+    <!-- Pagination Controls -->
+    <div id="pagination-controls" style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin: 3rem 0; display: none;">
+      <button id="prev-page-btn" class="btn btn-outline btn-sm">&larr; Previous</button>
+      <span id="page-indicator" style="font-size: 0.9rem; font-weight: 600; padding: 0 0.5rem;">Page 1 of 1</span>
+      <button id="next-page-btn" class="btn btn-outline btn-sm">Next &rarr;</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3><span style="color: var(--primary);">🍳</span> RecipeNest</h3>
+          <p>A modern full-stack recipe sharing platform built with Node.js, Express, MongoDB Atlas, and Vanilla JavaScript.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="/recipes.html">All Recipes</a></li>
+            <li><a href="/recipes.html?category=Breakfast">Breakfast Ideas</a></li>
+            <li><a href="/recipes.html?category=Dinner">Dinner Specials</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul class="footer-links">
+            <li><a href="/add-recipe.html">Share a Recipe</a></li>
+            <li><a href="/favorites.html">Saved Recipes</a></li>
+            <li><a href="/my-recipes.html">My Recipes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Project Info</h4>
+          <ul class="footer-links">
+            <li><a href="/about.html">About Project</a></li>
+            <li><a href="/contact.html">Contact & FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    let currentPage = 1;
+    let totalPages = 1;
+    let searchDebounceTimer = null;
+
+    // Elements
+    const searchInput = document.getElementById('search-input');
+    const categoryFilter = document.getElementById('category-filter');
+    const difficultyFilter = document.getElementById('difficulty-filter');
+    const timeFilter = document.getElementById('time-filter');
+    const sortSelect = document.getElementById('sort-select');
+    const clearBtn = document.getElementById('clear-filters-btn');
+    const recipesGrid = document.getElementById('recipes-grid');
+    const resultsCount = document.getElementById('results-count');
+    const paginationControls = document.getElementById('pagination-controls');
+    const prevPageBtn = document.getElementById('prev-page-btn');
+    const nextPageBtn = document.getElementById('next-page-btn');
+    const pageIndicator = document.getElementById('page-indicator');
+
+    // Parse URL params on page load
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('search')) searchInput.value = urlParams.get('search');
+    if (urlParams.get('category')) categoryFilter.value = urlParams.get('category');
+    if (urlParams.get('difficulty')) difficultyFilter.value = urlParams.get('difficulty');
+    if (urlParams.get('maxTime')) timeFilter.value = urlParams.get('maxTime');
+    if (urlParams.get('sort')) sortSelect.value = urlParams.get('sort');
+
+    async function fetchRecipes(page = 1) {
+      currentPage = page;
+      recipesGrid.innerHTML = `
+        <div class="recipe-card skeleton" style="height: 380px;"></div>
+        <div class="recipe-card skeleton" style="height: 380px;"></div>
+        <div class="recipe-card skeleton" style="height: 380px;"></div>
+      `;
+
+      const params = {
+        page,
+        limit: 9,
+        search: searchInput.value.trim(),
+        category: categoryFilter.value,
+        difficulty: difficultyFilter.value,
+        maxTime: timeFilter.value,
+        sort: sortSelect.value,
+      };
+
+      try {
+        const data = await api.get('/recipes', params);
+        recipesGrid.innerHTML = '';
+
+        totalPages = data.totalPages || 1;
+        resultsCount.textContent = `Showing ${data.recipes.length} of ${data.total} recipes`;
+
+        if (data.recipes && data.recipes.length > 0) {
+          data.recipes.forEach((recipe) => {
+            recipesGrid.appendChild(ui.renderRecipeCard(recipe));
+          });
+
+          // Update pagination
+          if (totalPages > 1) {
+            paginationControls.style.display = 'flex';
+            pageIndicator.textContent = `Page ${data.currentPage} of ${totalPages}`;
+            prevPageBtn.disabled = data.currentPage <= 1;
+            nextPageBtn.disabled = data.currentPage >= totalPages;
+          } else {
+            paginationControls.style.display = 'none';
+          }
+        } else {
+          paginationControls.style.display = 'none';
+          ui.renderEmptyState(
+            recipesGrid,
+            'No Recipes Match Your Filters',
+            'Try adjusting your search keywords, cuisine category, or cooking time filters.',
+            'Clear All Filters',
+            '#'
+          );
+          const emptyStateBtn = recipesGrid.querySelector('.empty-state a');
+          if (emptyStateBtn) {
+            emptyStateBtn.addEventListener('click', (e) => {
+              e.preventDefault();
+              resetFilters();
+            });
+          }
+        }
+      } catch (err) {
+        recipesGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; padding: 2rem; background: #fff; border-radius: var(--radius-md); text-align: center;">
+            <p style="color: var(--accent-red); font-weight: 600;">Error loading recipes: ${ui.escapeHtml(err.message)}</p>
+            <button onclick="fetchRecipes(1)" class="btn btn-outline btn-sm" style="margin-top: 1rem;">Retry</button>
+          </div>
+        `;
+      }
+    }
+
+    function resetFilters() {
+      searchInput.value = '';
+      categoryFilter.value = 'All';
+      difficultyFilter.value = 'All';
+      timeFilter.value = '';
+      sortSelect.value = 'newest';
+      window.history.replaceState({}, '', '/recipes.html');
+      fetchRecipes(1);
+    }
+
+    // Event listeners
+    searchInput.addEventListener('input', () => {
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => fetchRecipes(1), 350);
+    });
+
+    categoryFilter.addEventListener('change', () => fetchRecipes(1));
+    difficultyFilter.addEventListener('change', () => fetchRecipes(1));
+    timeFilter.addEventListener('change', () => fetchRecipes(1));
+    sortSelect.addEventListener('change', () => fetchRecipes(1));
+    clearBtn.addEventListener('click', resetFilters);
+
+    prevPageBtn.addEventListener('click', () => {
+      if (currentPage > 1) fetchRecipes(currentPage - 1);
+    });
+
+    nextPageBtn.addEventListener('click', () => {
+      if (currentPage < totalPages) fetchRecipes(currentPage + 1);
+    });
+
+    // Initial fetch
+    fetchRecipes(1);
+  </script>
+</body>
+</html>

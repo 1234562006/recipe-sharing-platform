@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact & Help – RecipeNest</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container navbar-container">
+      <a href="/index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"></path>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path>
+            <line x1="6" y1="1" x2="6" y2="4"></line>
+            <line x1="10" y1="1" x2="10" y2="4"></line>
+            <line x1="14" y1="1" x2="14" y2="4"></line>
+          </svg>
+        </div>
+        RecipeNest
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="/index.html" class="nav-link">Home</a></li>
+        <li><a href="/recipes.html" class="nav-link">Explore Recipes</a></li>
+        <li><a href="/about.html" class="nav-link">About</a></li>
+        <li><a href="/contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <div id="nav-guest-actions" style="display: flex; gap: 0.5rem; align-items: center;">
+          <a href="/login.html" class="btn btn-outline btn-sm">Log In</a>
+          <a href="/register.html" class="btn btn-primary btn-sm">Join Free</a>
+        </div>
+
+        <div id="nav-user-actions" style="display: none; align-items: center; gap: 0.75rem;">
+          <a href="/add-recipe.html" class="btn btn-primary btn-sm">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            Add Recipe
+          </a>
+
+          <div class="nav-user-dropdown">
+            <div id="user-pill-btn" class="user-pill">
+              <div id="nav-user-avatar" class="user-avatar">U</div>
+              <span id="nav-user-name">User</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+            <ul id="user-menu-dropdown" class="user-menu">
+              <li class="user-menu-item"><a href="/profile.html">My Profile</a></li>
+              <li class="user-menu-item"><a href="/my-recipes.html">My Recipes</a></li>
+              <li class="user-menu-item"><a href="/favorites.html">Saved Favorites</a></li>
+              <li class="user-menu-item" style="border-top: 1px solid var(--border-color); margin-top: 0.35rem;">
+                <button id="logout-btn" style="color: var(--accent-red);">Log Out</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header style="background: #fff; border-bottom: 1px solid var(--border-color); padding: 3rem 0;">
+    <div class="container" style="max-width: 850px;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.75rem;">Get in Touch</h1>
+      <p style="font-size: 1.15rem; color: var(--text-secondary);">
+        Questions regarding RecipeNest or feedback on recipes? Send us a note or check out our frequently asked questions.
+      </p>
+    </div>
+  </header>
+
+  <main class="main-content container" style="margin-top: 3rem; max-width: 850px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+      <!-- Contact Form -->
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin-bottom: 1.25rem;">Send a Message</h3>
+        <form id="contact-form">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="contact-name">Your Name</label>
+            <input type="text" id="contact-name" class="form-control" placeholder="Gordon Ramsay" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label class="form-label" for="contact-email">Your Email</label>
+            <input type="email" id="contact-email" class="form-control" placeholder="gordon@example.com" required>
+          </div>
+
+          <div class="form-group" style="margin-bottom: 1.25rem;">
+            <label class="form-label" for="contact-message">Message</label>
+            <textarea id="contact-message" class="form-control" rows="4" placeholder="How can we assist you with RecipeNest?" required></textarea>
+          </div>
+
+          <button type="submit" id="contact-submit-btn" class="btn btn-primary" style="width: 100%;">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- FAQ Section -->
+      <div style="background: #fff; border: 1px solid var(--border-color); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-sm);">
+        <h3 style="margin-bottom: 1.25rem;">Frequently Asked Questions</h3>
+
+        <div style="margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 0.25rem;">How do I publish a recipe?</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Simply create an account or sign in, then click the "+ Add Recipe" button in the navigation bar to fill in ingredients, steps, and photos.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 0.25rem;">Can another user edit my recipe?</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            No. The backend strictly verifies that only the original author possesses ownership authorization to edit or delete a recipe.
+          </p>
+        </div>
+
+        <div style="margin-bottom: 1.25rem;">
+          <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 0.25rem;">Where is the recipe data stored?</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            All user profiles, recipes, and favorites are stored in a cloud-hosted MongoDB Atlas database via Mongoose models.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.95rem; color: var(--primary); margin-bottom: 0.25rem;">How do I check system health?</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary);">
+            Visit the <a href="/api/health" target="_blank" style="color: var(--primary); text-decoration: underline;">/api/health</a> endpoint to view uptime and database status.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 RecipeNest. College FSD Project.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = document.getElementById('contact-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        ui.showToast('Thank you! Your message has been received.', 'success');
+        document.getElementById('contact-form').reset();
+      }, 700);
+    });
+  </script>
+</body>
+</html>
