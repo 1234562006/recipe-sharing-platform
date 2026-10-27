@@ -23,3 +23,9 @@ Thumbs.db
 # Archives
 *.zip
 *.tar.gz
+
+# Private environment configuration
+config.env
+.env
+.env.*
+!.env.example
