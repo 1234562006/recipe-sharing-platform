@@ -18,7 +18,7 @@ const favoriteRoutes = require('./routes/favorites');
 const userRoutes = require('./routes/users');
 
 const app = express();
-
+app.set('trust proxy', 1);
 // Enable CORS
 app.use(
   cors({
